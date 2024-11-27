@@ -1,5 +1,6 @@
 plugins {
   id 'com.android.library'
+  id 'maven-publish'
 }
 //ext {
 //  bintrayRepo = 'maven'
@@ -60,3 +61,17 @@ dependencies {
 
 //apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 //apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
+afterEvaluate {
+  publishing {
+    publications {
+      release(MavenPublication) {
+        from components.release
+
+        groupId = 'com.github.Vickyxdev'
+        artifactId = 'expandablecheckrecyclerview'
+        version = '1.0'
+      }
+    }
+  }
+}
